@@ -24,14 +24,10 @@ export const ConsultantDetailView: React.FunctionComponent = () => {
         );
     }, []);
 
-    const submitConsultant = (data: IConsultant) => {
-
-    }
-
     return (
         <>
             <Spinner isLoading={consultant == null}>
-                <ConsultantDetailViewForm consultant={consultant} onSubmit={submitConsultant} />
+                <ConsultantDetailViewForm consultant={consultant} />
             </Spinner>
         </>
     );

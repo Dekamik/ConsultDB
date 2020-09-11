@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsultDB.BusinessLogic.Consultants
 {
@@ -10,6 +11,10 @@ namespace ConsultDB.BusinessLogic.Consultants
     {
         IQueryable<Consultant> GetAll();
 
-        Consultant GetConsultant(int id);
+        Task<Consultant> GetConsultant(int id);
+
+        Task SaveConsultant(Consultant consultant);
+
+        Task DeleteConsultant(int id);
     }
 }

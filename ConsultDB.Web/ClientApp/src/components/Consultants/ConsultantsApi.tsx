@@ -12,4 +12,12 @@ export class ConsultantsApi extends Api {
     getConsultant(id: string, success: (data: IConsultant) => void, error?: (message: string) => void, final?: () => void) {
         this.get(`${API_CONSULTANTS}/${id}`, success, error, final);
     }
+
+    saveConsultant(data: IConsultant, success: () => void, error?: (message: string) => void, final?: () => void) {
+        this.post(`${API_CONSULTANTS}`, data, success, error, final);
+    }
+
+    deleteConsultant(id: string, success: () => void, error?: (message: string) => void, final?: () => void) {
+        this.delete(`${API_CONSULTANTS}/${id}`, success, error, final);
+    }
 }

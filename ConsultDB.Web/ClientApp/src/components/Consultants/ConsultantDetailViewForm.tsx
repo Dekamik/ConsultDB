@@ -2,18 +2,23 @@
 import { useForm } from 'react-hook-form';
 import { Checkbox } from '../Common/Checkbox';
 import { TextInput } from '../Common/TextInput';
+import { ConsultantsApi } from './ConsultantsApi';
 import { IConsultant } from './IConsultant';
 
 interface IConsultantDetailViewForm {
     consultant?: IConsultant;
-    onSubmit: (data: IConsultant) => void;
 }
 
-export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetailViewForm> = ({ consultant, onSubmit }) => {
+export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetailViewForm> = ({ consultant }) => {
 
+    const api = new ConsultantsApi();
     const methods = useForm({});
 
     const [isReadonly, setIsReadonly] = React.useState<boolean>(true);
+
+    const onSave = (data: IConsultant) => {
+
+    }
 
     return (
         <>
@@ -41,7 +46,7 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                                 ? null
                                 : <div className="btn-group float-right" role="group">
                                     <button type="button" className="btn btn-danger" onClick={() => setIsReadonly(true)}>Avbryt</button>
-                                    <button type="submit" className="btn btn-success" onClick={() => setIsReadonly(true)}>Spara</button>
+                                    <button type="submit" className="btn btn-success">Spara</button>
                                 </div>
                         }
                     </form>

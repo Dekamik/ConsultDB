@@ -19,7 +19,7 @@ export const Checkbox: React.FunctionComponent<ICheckbox> = (props) => {
                 </p>
             </>
             : <div className="form-check">
-                <input className="form-check-input" type="checkbox" id={props.name} name={props.name} checked={props.isChecked} />
+                <input className="form-check-input" type="checkbox" id={props.name} name={props.name} defaultChecked={props.isChecked} />
                 <label className="form-check-label" htmlFor={props.name}>{props.label}</label>
             </div>
     );

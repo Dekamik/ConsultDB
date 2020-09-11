@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using ConsultDB.Api.Consultants.Models;
 using ConsultDB.BusinessLogic.Consultants;
-using ConsultDB.BusinessLogic.Helpers;
 using ConsultDB.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -42,10 +42,10 @@ namespace ConsultDB.Api.Consultants
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetConsultantById(int id)
+        public async Task<IActionResult> GetConsultantById(int id)
         {
-            Consultant consultant = _consultantService.GetConsultant(id);
-            var model = new ConsultantViewModel
+            Consultant consultant = await _consultantService.GetConsultant(id);
+            var model = new ConsultantModel
             {
                 ConsultantId = consultant.ConsultantId,
                 FullName = consultant.Name,
@@ -58,6 +58,37 @@ namespace ConsultDB.Api.Consultants
             };
 
             return Ok(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveConsultant([FromForm] ConsultantModel model)
+        {
+            Consultant consultant = CreateConsultant(model);
+            await _consultantService.SaveConsultant(consultant);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteConsultant(int id)
+        {
+            await _consultantService.DeleteConsultant(id);
+            return Ok();
+        }
+
+        private Consultant CreateConsultant(ConsultantModel model)
+        {
+            return new Consultant
+            {
+                ConsultantId = model.ConsultantId,
+                Name = model.FullName,
+                DateOfBirth = DateTime.Parse(model.DateOfBirth),
+                EmailAddress = model.EmailAddress,
+                StreetAddress = model.StreetAddress,
+                ZipCode = int.Parse(model.ZipCode),
+                City = model.City,
+                IsOnAssignment = model.IsOnAssignment
+            };
         }
     }
 }

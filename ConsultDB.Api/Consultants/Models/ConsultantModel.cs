@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ConsultDB.Api.Consultants.Models
 {
-    public class ConsultantViewModel
+    public class ConsultantModel
     {
         public int ConsultantId { get; set; }
 
