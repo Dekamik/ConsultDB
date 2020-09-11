@@ -49,11 +49,11 @@ namespace ConsultDB.Api.Consultants
             {
                 ConsultantId = consultant.ConsultantId,
                 FullName = consultant.Name,
-                Age = consultant.DateOfBirth.GetAge(DateTime.Today),
+                DateOfBirth = consultant.DateOfBirth.ToString("yyyy-MM-dd"),
                 EmailAddress = consultant.EmailAddress,
-                HomeAddress = $"{consultant.StreetAddress}\n" +
-                    $"{consultant.ZipCode}\n" +
-                    $"{consultant.City}",
+                StreetAddress = consultant.StreetAddress,
+                ZipCode = consultant.ZipCode.ToString(),
+                City = consultant.City,
                 IsOnAssignment = consultant.IsOnAssignment
             };
 

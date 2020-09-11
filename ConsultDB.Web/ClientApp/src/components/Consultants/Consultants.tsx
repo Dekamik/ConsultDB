@@ -16,7 +16,8 @@ export const Consultants: React.FunctionComponent = () => {
         api.getList(
             (data: IConsultantListItem[]) => {
                 setConsultants(data);
-            });
+            }
+        );
     }, []);
 
     const onRowClick = (id: number) => {

@@ -1,9 +1,11 @@
 ﻿export interface IConsultant {
     consultantId: number;
     fullName: string;
-    dateOfBirth: Date;
+    dateOfBirth: string;
     emailAddress: string;
-    homeAddress: string;
+    streetAddress: string;
+    zipCode: string;
+    city: string;
     skills: string[];
     isOnAssignment: boolean;
 }
