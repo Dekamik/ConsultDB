@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Consultants\Consultants.tsx" />
+    <None Remove="ClientApp\src\components\Consultants\ConsultantsTable.tsx" />
+    <None Remove="ClientApp\src\components\Consultants\IConsultant.tsx" />
+    <None Remove="ClientApp\src\components\Consultants\IConsultantListItem.tsx" />
     <None Remove="ClientApp\src\RoutingConstants.tsx" />
     <None Remove="ClientApp\src\routing\ApiRouting.tsx" />
   </ItemGroup>
