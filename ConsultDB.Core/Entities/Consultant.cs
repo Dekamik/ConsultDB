@@ -11,7 +11,10 @@ namespace ConsultDB.Core.Entities
         public int ConsultantId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
 
         [Required]
         public DateTime DateOfBirth { get; set; }

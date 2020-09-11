@@ -1,10 +1,11 @@
 ﻿import * as React from 'react';
 import { IConsultantListItem } from './IConsultantListItem';
 
-export const ConsultantsTable: React.FunctionComponent = () => {
+interface IConsultantTable {
+    consultants: IConsultantListItem[];
+}
 
-    const [consultants, setConsultants] = React.useState<IConsultantListItem[]>([]);
-
+export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ consultants }) => {
     return (
         <table className="table">
             <thead>

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ConsultDB.BusinessLogic;
+using ConsultDB.BusinessLogic.Consultants;
 using ConsultDB.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +19,7 @@ namespace PortfolioReact.Api
 {
     public class Startup
     {
-        private string _corsPolicy = "AllowAll";
+        private readonly string _corsPolicy = "AllowAll";
 
         public Startup(IConfiguration configuration)
         {
@@ -41,6 +43,8 @@ namespace PortfolioReact.Api
             });
 
             services.AddDbContext<ConsultDBContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:ConsultDB"]));
+
+            services.AddScoped<IConsultantService, ConsultantService>();
 
             services.AddControllers();
         }
