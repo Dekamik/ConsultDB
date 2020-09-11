@@ -25,6 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Common\Spinner.tsx" />
+    <None Remove="ClientApp\src\components\Consultants\ConsultantDetailView.tsx" />
     <None Remove="ClientApp\src\components\Consultants\Consultants.tsx" />
     <None Remove="ClientApp\src\components\Consultants\ConsultantsApi.tsx" />
     <None Remove="ClientApp\src\components\Consultants\ConsultantsTable.tsx" />

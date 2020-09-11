@@ -7,7 +7,7 @@ import './NavMenu.css';
 
 export const NavMenu: React.FunctionComponent = () => {
 
-    const [isOpen, setIsOpen] = React.useState<boolean>(true);
+    const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);

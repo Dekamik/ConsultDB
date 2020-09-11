@@ -1,11 +1,10 @@
-﻿using ConsultDB.BusinessLogic.Consultants;
-using ConsultDB.Core;
+﻿using ConsultDB.Core;
 using ConsultDB.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsultDB.BusinessLogic
+namespace ConsultDB.BusinessLogic.Consultants
 {
     public class ConsultantService : IConsultantService
     {
@@ -17,5 +16,10 @@ namespace ConsultDB.BusinessLogic
         }
 
         public IQueryable<Consultant> GetAll() => _dbContext.Consultants;
+
+        public Consultant GetConsultant(int id)
+        {
+            return _dbContext.Consultants.Single(c => c.ConsultantId == id);
+        }
     }
 }

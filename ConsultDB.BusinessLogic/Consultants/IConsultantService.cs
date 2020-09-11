@@ -9,5 +9,7 @@ namespace ConsultDB.BusinessLogic.Consultants
     public interface IConsultantService
     {
         IQueryable<Consultant> GetAll();
+
+        Consultant GetConsultant(int id);
     }
 }
