@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultDB.Web", "ConsultDB.Web\ConsultDB.Web.csproj", "{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultDB.Api", "ConsultDB.Api\ConsultDB.Api.csproj", "{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B2E7AB4-2EA5-423C-8EE5-88B76C4747AE}
+	EndGlobalSection
+EndGlobal
