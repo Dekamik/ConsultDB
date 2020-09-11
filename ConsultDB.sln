@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultDB.Web", "ConsultDB.Web\ConsultDB.Web.csproj", "{14CA3F5A-71DE-439C-8D1F-3C493D37F2D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultDB.Api", "ConsultDB.Api\ConsultDB.Api.csproj", "{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsultDB.Api", "ConsultDB.Api\ConsultDB.Api.csproj", "{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultDB.Core", "ConsultDB.Core\ConsultDB.Core.csproj", "{195E8BE3-748E-48C0-BEDF-49DB74908A24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultDB.BusinessLogic", "ConsultDB.BusinessLogic\ConsultDB.BusinessLogic.csproj", "{A8CF7823-80D0-45BD-AFDD-F56785722619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A5A73D8-10FA-4B72-BC3D-A8AA29884488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195E8BE3-748E-48C0-BEDF-49DB74908A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195E8BE3-748E-48C0-BEDF-49DB74908A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195E8BE3-748E-48C0-BEDF-49DB74908A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195E8BE3-748E-48C0-BEDF-49DB74908A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CF7823-80D0-45BD-AFDD-F56785722619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CF7823-80D0-45BD-AFDD-F56785722619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CF7823-80D0-45BD-AFDD-F56785722619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CF7823-80D0-45BD-AFDD-F56785722619}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
