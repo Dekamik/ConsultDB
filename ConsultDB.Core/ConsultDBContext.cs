@@ -10,5 +10,7 @@ namespace ConsultDB.Core
         }
 
         public virtual DbSet<Consultant> Consultants { get; set; }
+
+        public virtual DbSet<ConsultantImage> ConsultantImages { get; set; }
     }
 }

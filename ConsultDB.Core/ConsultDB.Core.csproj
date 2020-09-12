@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200912123634_Skills.cs" />
     <Compile Remove="Migrations\20200912123634_Skills.Designer.cs" />
+    <Compile Remove="Migrations\20200912132655_Images.cs" />
+    <Compile Remove="Migrations\20200912132655_Images.Designer.cs" />
+    <Compile Remove="Migrations\20200912133220_Images.cs" />
+    <Compile Remove="Migrations\20200912133220_Images.Designer.cs" />
+    <Compile Remove="Migrations\20200912133459_ConsultantImages.cs" />
+    <Compile Remove="Migrations\20200912133459_ConsultantImages.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,5 +30,9 @@ namespace ConsultDB.Core.Entities
         public bool IsOnAssignment { get; set; }
 
         public string Skills { get; set; }
+
+        public int? ConsultantImageId { get; set; }
+
+        public virtual ConsultantImage ConsultantImage { get; set; }
     }
 }
