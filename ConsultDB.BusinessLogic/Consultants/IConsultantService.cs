@@ -13,7 +13,9 @@ namespace ConsultDB.BusinessLogic.Consultants
 
         Task<Consultant> GetConsultant(int id);
 
-        Task SaveConsultant(Consultant consultant);
+        Task<Consultant> CreateConsultant(Consultant consultant);
+
+        Task UpdateConsultant(Consultant consultant);
 
         Task DeleteConsultant(int id);
     }

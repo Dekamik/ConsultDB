@@ -45,16 +45,26 @@ namespace ConsultDB.Api.Consultants
         public async Task<IActionResult> GetConsultantById(int id)
         {
             Consultant consultant = await _consultantService.GetConsultant(id);
-            var model = CreateConsultantModel(consultant);
+            ConsultantModel model = CreateConsultantModel(consultant);
 
             return Ok(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveConsultant([FromForm] ConsultantModel model)
+        [Route("new")]
+        public async Task<IActionResult> NewConsultant([FromForm] ConsultantModel model)
         {
             Consultant consultant = CreateConsultant(model);
-            await _consultantService.SaveConsultant(consultant);
+            Consultant dbConsultant = await _consultantService.CreateConsultant(consultant);
+            ConsultantModel newModel = CreateConsultantModel(dbConsultant);
+            return Ok(newModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateConsultant([FromForm] ConsultantModel model)
+        {
+            Consultant consultant = CreateConsultant(model);
+            await _consultantService.UpdateConsultant(consultant);
             return Ok(model);
         }
 

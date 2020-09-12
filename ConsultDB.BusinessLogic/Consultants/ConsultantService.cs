@@ -24,16 +24,20 @@ namespace ConsultDB.BusinessLogic.Consultants
             return _dbContext.Consultants.SingleAsync(c => c.ConsultantId == id);
         }
 
-        public async Task SaveConsultant(Consultant consultant)
+        public async Task<Consultant> CreateConsultant(Consultant consultant)
+        {
+            _dbContext.Add(consultant);
+            await _dbContext.SaveChangesAsync();
+            return consultant;
+        }
+
+        public async Task UpdateConsultant(Consultant consultant)
         {
             Consultant existingConsultant = await GetAll()
                 .SingleOrDefaultAsync(c => c.ConsultantId == consultant.ConsultantId);
-            if (existingConsultant == null)
+            if (existingConsultant != null)
             {
-                _dbContext.Add(consultant);
-            }
-            else
-            {
+                // TODO: Create extension method for updating objects through reflection
                 existingConsultant.Name = consultant.Name;
                 existingConsultant.DateOfBirth = consultant.DateOfBirth;
                 existingConsultant.EmailAddress = consultant.EmailAddress;
@@ -41,8 +45,9 @@ namespace ConsultDB.BusinessLogic.Consultants
                 existingConsultant.ZipCode = consultant.ZipCode;
                 existingConsultant.City = consultant.City;
                 existingConsultant.IsOnAssignment = consultant.IsOnAssignment;
+
+                _dbContext.SaveChanges();
             }
-            _dbContext.SaveChanges();
         }
 
         public async Task DeleteConsultant(int id)
