@@ -7,7 +7,7 @@ namespace ConsultDB.Api.Consultants.Models
 {
     public class ConsultantModel
     {
-        public int ConsultantId { get; set; }
+        public int? ConsultantId { get; set; }
 
         public string FullName { get; set; }
 

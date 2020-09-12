@@ -78,9 +78,8 @@ namespace ConsultDB.Api.Consultants
 
         private Consultant CreateConsultant(ConsultantModel model)
         {
-            return new Consultant
+            var consultant = new Consultant
             {
-                ConsultantId = model.ConsultantId,
                 Name = model.FullName,
                 DateOfBirth = DateTime.Parse(model.DateOfBirth),
                 EmailAddress = model.EmailAddress,
@@ -89,6 +88,11 @@ namespace ConsultDB.Api.Consultants
                 City = model.City,
                 IsOnAssignment = model.IsOnAssignment
             };
+            if (model.ConsultantId.HasValue)
+            {
+                consultant.ConsultantId = model.ConsultantId.Value;
+            }
+            return consultant;
         }
 
         private ConsultantModel CreateConsultantModel(Consultant consultant)

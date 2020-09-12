@@ -22,7 +22,7 @@ export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
             }
             {
                 props.readonly
-                    ? <p id={props.name} >{props.defaultValue}</p>
+                    ? <p className="form-control-plaintext" id={props.name} >{props.defaultValue}</p>
                     : <input className="form-control" type={props.type ?? "text"} id={props.name} name={props.name} defaultValue={props.defaultValue} ref={context.register()} />
             }
         </div>

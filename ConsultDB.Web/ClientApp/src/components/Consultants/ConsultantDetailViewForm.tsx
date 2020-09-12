@@ -41,7 +41,7 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                             <TextInput name="city" label="Ort" defaultValue={props.consultant?.city} readonly={props.isReadonly} />
                             <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={props.consultant?.isOnAssignment ?? false} readonly={props.isReadonly} />
                             {
-                                props.isReadonly
+                                props.isReadonly // TODO: Fix loading spinner on submit buttons
                                     ? null
                                     : <div className="btn-group float-right" role="group">
                                         <button type="button" className="btn btn-danger" onClick={() => props.onAbort()}>Avbryt</button>

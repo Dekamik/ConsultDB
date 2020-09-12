@@ -14,14 +14,14 @@ export const Checkbox: React.FunctionComponent<ICheckbox> = (props) => {
 
     return (
         props.readonly
-            ? <>
-                <label className="form-check-label" htmlFor={props.name}>{props.label}</label>
-                <p>
+            ? <div className="form-group">
+                <label htmlFor={props.name}>{props.label}</label>
+                <p className="form-control-plaintext">
                     {
                         props.isChecked ? "Ja" : "Nej"
                     }
                 </p>
-            </>
+            </div>
             : <div className="form-check">
                 <input className="form-check-input" type="checkbox" id={props.name} name={props.name} defaultChecked={props.isChecked} ref={context.register()} />
                 <label className="form-check-label" htmlFor={props.name}>{props.label}</label>

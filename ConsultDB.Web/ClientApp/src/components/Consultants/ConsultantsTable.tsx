@@ -9,15 +9,15 @@ interface IConsultantTable {
 
 export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ consultants, onRowClick }) => {
     return (
-        <div className="table-responsive">
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Namn</th>
-                        <th>Är på uppdrag</th>
-                    </tr>
-                </thead>
-                <Spinner isLoading={consultants.length === 0}>
+        <Spinner isLoading={consultants.length === 0}>
+            <div className="table-responsive">
+                <table className="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Namn</th>
+                            <th>Är på uppdrag</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {
                             consultants.map(consultant =>
@@ -28,8 +28,8 @@ export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ co
                             )
                         }
                     </tbody>
-                </Spinner>
-            </table>
-        </div>
+                </table>
+            </div>
+        </Spinner>
     );
 }
