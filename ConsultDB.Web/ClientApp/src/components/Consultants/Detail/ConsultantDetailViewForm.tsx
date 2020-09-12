@@ -1,8 +1,8 @@
 ﻿import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Checkbox } from '../Common/Checkbox';
-import { TextInput } from '../Common/TextInput';
-import { HiddenInput } from '../Common/HiddenInput';
+import { Checkbox } from '../../Common/Checkbox';
+import { TextInput } from '../../Common/TextInput';
+import { HiddenInput } from '../../Common/HiddenInput';
 import { IConsultant } from './IConsultant';
 
 interface IConsultantDetailViewForm {

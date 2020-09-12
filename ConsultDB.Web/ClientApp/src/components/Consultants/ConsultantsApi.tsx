@@ -1,7 +1,7 @@
 ﻿import { Api } from "../../helpers/Api";
 import { API_CONSULTANTS } from "../../routing/ApiRouting";
-import { IConsultant } from "./IConsultant";
-import { IConsultantListItem } from "./IConsultantListItem";
+import { IConsultant } from "./Detail/IConsultant";
+import { IConsultantListItem } from "./List/IConsultantListItem";
 
 export class ConsultantsApi extends Api {
 

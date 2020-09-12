@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import { Spinner } from '../Common/Spinner';
+import { Spinner } from '../../Common/Spinner';
 import { IConsultantListItem } from './IConsultantListItem';
 
 interface IConsultantTable {

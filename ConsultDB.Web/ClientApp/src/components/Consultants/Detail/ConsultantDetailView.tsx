@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { useHistory, useParams } from 'react-router';
-import { CONSULTANTS, CONSULTANT_DETAIL } from '../../routing/WebRouting';
-import { Spinner } from '../Common/Spinner';
+import { CONSULTANTS } from '../../../routing/WebRouting';
+import { Spinner } from '../../Common/Spinner';
 import { ConsultantDetailViewForm } from './ConsultantDetailViewForm';
-import { ConsultantsApi } from './ConsultantsApi';
+import { ConsultantsApi } from './../ConsultantsApi';
 import { IConsultant } from './IConsultant';
 
 interface ConsultantDetailViewParams {

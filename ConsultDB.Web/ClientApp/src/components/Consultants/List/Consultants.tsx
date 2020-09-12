@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { useHistory } from 'react-router';
-import { CONSULTANTS, CONSULTANT_DETAIL } from '../../routing/WebRouting';
-import { ConsultantsApi } from './ConsultantsApi';
+import { CONSULTANTS, CONSULTANT_DETAIL } from '../../../routing/WebRouting';
+import { ConsultantsApi } from './../ConsultantsApi';
 import { ConsultantsTable } from './ConsultantsTable';
 import { IConsultantListItem } from './IConsultantListItem';
 
