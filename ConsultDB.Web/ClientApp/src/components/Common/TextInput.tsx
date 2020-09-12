@@ -5,13 +5,13 @@ interface ITextInput {
     name: string;
     label?: string;
     defaultValue?: string;
-    readonly: boolean;
+    readonly?: boolean;
     type?: "text" | "email";
 }
 
 export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
 
-    const context = useFormContext();
+    const { register } = useFormContext() ?? { register: ""};
 
     return (
         <div className="form-group">
@@ -23,7 +23,7 @@ export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
             {
                 props.readonly
                     ? <p className="form-control-plaintext" id={props.name} >{props.defaultValue}</p>
-                    : <input className="form-control" type={props.type ?? "text"} id={props.name} name={props.name} defaultValue={props.defaultValue} ref={context.register()} />
+                    : <input className="form-control" type={props.type ?? "text"} id={props.name} name={props.name} defaultValue={props.defaultValue} ref={typeof register !== "string" ? register() : ""} />
             }
         </div>
     );
