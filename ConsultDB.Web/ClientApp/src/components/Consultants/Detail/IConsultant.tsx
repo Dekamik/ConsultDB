@@ -8,4 +8,6 @@
     city: string;
     skills: string;
     isOnAssignment: boolean;
+    profileImage: File;
+    profileImageType: string;
 }

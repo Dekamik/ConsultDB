@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Checkbox } from '../../Common/Checkbox';
 import { TextInput } from '../../Common/TextInput';
 import { HiddenInput } from '../../Common/HiddenInput';
+import { ImageInput } from '../../Common/ImageInput';
 import { IConsultant } from './IConsultant';
 
 interface IConsultantDetailViewForm {
@@ -32,15 +33,28 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                 <div className="col-12">
                     <FormProvider {...methods}>
                         <form onSubmit={methods.handleSubmit(props.onSubmitForm)}>
-                            <HiddenInput name="consultantId" value={props.consultant?.consultantId} />
-                            <TextInput name="fullName" label="Namn" defaultValue={props.consultant?.fullName} readonly={props.isReadonly} />
-                            <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={props.consultant?.dateOfBirth} readonly={props.isReadonly} />
-                            <TextInput name="emailAddress" label="E-postadress" type="email" defaultValue={props.consultant?.emailAddress} readonly={props.isReadonly} />
-                            <TextInput name="streetAddress" label="Gatuadress" defaultValue={props.consultant?.streetAddress} readonly={props.isReadonly} />
-                            <TextInput name="zipCode" label="Postnummer" defaultValue={props.consultant?.zipCode} readonly={props.isReadonly} />
-                            <TextInput name="city" label="Ort" defaultValue={props.consultant?.city} readonly={props.isReadonly} />
-                            <TextInput name="skills" label="Kompetenser" defaultValue={props.consultant?.skills} readonly={props.isReadonly} />
-                            <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={props.consultant?.isOnAssignment ?? false} readonly={props.isReadonly} />
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <HiddenInput name="consultantId" value={props.consultant?.consultantId} />
+                                    <TextInput name="fullName" label="Namn" defaultValue={props.consultant?.fullName} readonly={props.isReadonly} />
+                                    <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={props.consultant?.dateOfBirth} readonly={props.isReadonly} />
+                                    <TextInput name="emailAddress" label="E-postadress" type="email" defaultValue={props.consultant?.emailAddress} readonly={props.isReadonly} />
+                                </div>
+                                <div className="col-sm-6">
+                                    <ImageInput name="profileImage" label="Profilbild" defaultValue={props.consultant?.profileImage} readonly={props.isReadonly} />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <TextInput name="streetAddress" label="Gatuadress" defaultValue={props.consultant?.streetAddress} readonly={props.isReadonly} />
+                                    <TextInput name="zipCode" label="Postnummer" defaultValue={props.consultant?.zipCode} readonly={props.isReadonly} />
+                                    <TextInput name="city" label="Ort" defaultValue={props.consultant?.city} readonly={props.isReadonly} />
+                                </div>
+                                <div className="col-sm-6">
+                                    <TextInput name="skills" label="Kompetenser" defaultValue={props.consultant?.skills} readonly={props.isReadonly} />
+                                    <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={props.consultant?.isOnAssignment ?? false} readonly={props.isReadonly} />
+                                </div>
+                            </div>
                             {
                                 props.isReadonly // TODO: Fix loading spinner on submit buttons
                                     ? null

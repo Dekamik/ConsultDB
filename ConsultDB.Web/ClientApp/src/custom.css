@@ -12,3 +12,10 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.profile-img {
+    max-height: 200px;
+    max-width: 200px;
+    height: auto;
+    width: auto;
+}

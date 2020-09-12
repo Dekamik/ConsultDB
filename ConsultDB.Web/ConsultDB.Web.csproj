@@ -27,6 +27,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\components\Common\Checkbox.tsx" />
     <None Remove="ClientApp\src\components\Common\HiddenInput.tsx" />
+    <None Remove="ClientApp\src\components\Common\ImageInput.tsx" />
     <None Remove="ClientApp\src\components\Common\Spinner.tsx" />
     <None Remove="ClientApp\src\components\Common\TextInput.tsx" />
     <None Remove="ClientApp\src\components\Consultants\ConsultantDetailView.tsx" />
@@ -36,6 +37,7 @@
     <None Remove="ClientApp\src\components\Consultants\ConsultantsTable.tsx" />
     <None Remove="ClientApp\src\components\Consultants\IConsultant.tsx" />
     <None Remove="ClientApp\src\components\Consultants\IConsultantListItem.tsx" />
+    <None Remove="ClientApp\src\components\Consultants\List\ConsultantDetailViewProfileImage.tsx" />
     <None Remove="ClientApp\src\components\Consultants\List\ConsultantsFilter.tsx" />
     <None Remove="ClientApp\src\helpers\Api.tsx" />
     <None Remove="ClientApp\src\RoutingConstants.tsx" />
