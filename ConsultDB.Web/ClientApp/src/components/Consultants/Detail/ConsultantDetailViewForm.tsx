@@ -39,6 +39,7 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                             <TextInput name="streetAddress" label="Gatuadress" defaultValue={props.consultant?.streetAddress} readonly={props.isReadonly} />
                             <TextInput name="zipCode" label="Postnummer" defaultValue={props.consultant?.zipCode} readonly={props.isReadonly} />
                             <TextInput name="city" label="Ort" defaultValue={props.consultant?.city} readonly={props.isReadonly} />
+                            <TextInput name="skills" label="Kompetenser" defaultValue={props.consultant?.skills} readonly={props.isReadonly} />
                             <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={props.consultant?.isOnAssignment ?? false} readonly={props.isReadonly} />
                             {
                                 props.isReadonly // TODO: Fix loading spinner on submit buttons

@@ -6,6 +6,6 @@
     streetAddress: string;
     zipCode: string;
     city: string;
-    skills: string[];
+    skills: string;
     isOnAssignment: boolean;
 }
