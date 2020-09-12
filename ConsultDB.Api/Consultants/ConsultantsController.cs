@@ -45,17 +45,7 @@ namespace ConsultDB.Api.Consultants
         public async Task<IActionResult> GetConsultantById(int id)
         {
             Consultant consultant = await _consultantService.GetConsultant(id);
-            var model = new ConsultantModel
-            {
-                ConsultantId = consultant.ConsultantId,
-                FullName = consultant.Name,
-                DateOfBirth = consultant.DateOfBirth.ToString("yyyy-MM-dd"),
-                EmailAddress = consultant.EmailAddress,
-                StreetAddress = consultant.StreetAddress,
-                ZipCode = consultant.ZipCode.ToString(),
-                City = consultant.City,
-                IsOnAssignment = consultant.IsOnAssignment
-            };
+            var model = CreateConsultantModel(consultant);
 
             return Ok(model);
         }
@@ -65,7 +55,7 @@ namespace ConsultDB.Api.Consultants
         {
             Consultant consultant = CreateConsultant(model);
             await _consultantService.SaveConsultant(consultant);
-            return Ok();
+            return Ok(model);
         }
 
         [HttpDelete]
@@ -88,6 +78,21 @@ namespace ConsultDB.Api.Consultants
                 ZipCode = int.Parse(model.ZipCode),
                 City = model.City,
                 IsOnAssignment = model.IsOnAssignment
+            };
+        }
+
+        private ConsultantModel CreateConsultantModel(Consultant consultant)
+        {
+            return new ConsultantModel
+            {
+                ConsultantId = consultant.ConsultantId,
+                FullName = consultant.Name,
+                DateOfBirth = consultant.DateOfBirth.ToString("yyyy-MM-dd"),
+                EmailAddress = consultant.EmailAddress,
+                StreetAddress = consultant.StreetAddress,
+                ZipCode = consultant.ZipCode.ToString(),
+                City = consultant.City,
+                IsOnAssignment = consultant.IsOnAssignment
             };
         }
     }

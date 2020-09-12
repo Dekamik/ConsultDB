@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 interface ICheckbox {
     name: string;
@@ -8,6 +9,9 @@ interface ICheckbox {
 }
 
 export const Checkbox: React.FunctionComponent<ICheckbox> = (props) => {
+
+    const context = useFormContext();
+
     return (
         props.readonly
             ? <>
@@ -19,7 +23,7 @@ export const Checkbox: React.FunctionComponent<ICheckbox> = (props) => {
                 </p>
             </>
             : <div className="form-check">
-                <input className="form-check-input" type="checkbox" id={props.name} name={props.name} defaultChecked={props.isChecked} />
+                <input className="form-check-input" type="checkbox" id={props.name} name={props.name} defaultChecked={props.isChecked} ref={context.register()} />
                 <label className="form-check-label" htmlFor={props.name}>{props.label}</label>
             </div>
     );

@@ -15,6 +15,7 @@ export const ConsultantDetailView: React.FunctionComponent = () => {
     const params = useParams<ConsultantDetailViewParams>();
 
     const [consultant, setConsultant] = React.useState<IConsultant | undefined>();
+    const [isReadonly, setIsReadonly] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         api.getConsultant(params.id,
@@ -24,10 +25,33 @@ export const ConsultantDetailView: React.FunctionComponent = () => {
         );
     }, []);
 
+    const handleSubmit = (data: IConsultant) => {
+        api.saveConsultant(data,
+            (response: IConsultant) => {
+                setConsultant(response);
+                setIsReadonly(true);
+            }
+        );
+    }
+
+    const onEdit = () => {
+        setIsReadonly(false);
+    }
+
+    const onAbort = () => {
+        setIsReadonly(true);
+    }
+
     return (
         <>
             <Spinner isLoading={consultant == null}>
-                <ConsultantDetailViewForm consultant={consultant} />
+                <ConsultantDetailViewForm
+                    consultant={consultant}
+                    onSubmitForm={handleSubmit}
+                    isReadonly={isReadonly}
+                    onEdit={onEdit}
+                    onAbort={onAbort}
+                />
             </Spinner>
         </>
     );

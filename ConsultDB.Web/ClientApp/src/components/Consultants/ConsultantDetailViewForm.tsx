@@ -1,55 +1,55 @@
 ﻿import * as React from 'react';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Checkbox } from '../Common/Checkbox';
 import { TextInput } from '../Common/TextInput';
-import { ConsultantsApi } from './ConsultantsApi';
+import { HiddenInput } from '../Common/HiddenInput';
 import { IConsultant } from './IConsultant';
 
 interface IConsultantDetailViewForm {
     consultant?: IConsultant;
+    isReadonly: boolean;
+    onSubmitForm: (data: IConsultant) => void;
+    onEdit: () => void;
+    onAbort: () => void;
 }
 
-export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetailViewForm> = ({ consultant }) => {
+export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetailViewForm> = (props) => {
 
-    const api = new ConsultantsApi();
     const methods = useForm({});
-
-    const [isReadonly, setIsReadonly] = React.useState<boolean>(true);
-
-    const onSave = (data: IConsultant) => {
-
-    }
 
     return (
         <>
             <div className="row">
                 <div className="col-12">
                     {
-                        isReadonly
-                            ? <button className="btn btn-primary float-right" onClick={() => setIsReadonly(false)} >Edit</button>
+                        props.isReadonly
+                            ? <button className="btn btn-primary float-right" onClick={() => props.onEdit()} >Edit</button>
                             : null
                     }
                 </div>
             </div>
             <div className="row">
                 <div className="col-12">
-                    <form onSubmit={methods.handleSubmit(onSubmit)}>
-                        <TextInput name="fullName" label="Namn" defaultValue={consultant?.fullName} readonly={isReadonly} />
-                        <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={consultant?.dateOfBirth} readonly={isReadonly} />
-                        <TextInput name="emailAddress" label="E-postadress" type="email" defaultValue={consultant?.emailAddress} readonly={isReadonly} />
-                        <TextInput name="streetAddress" label="Gatuadress" defaultValue={consultant?.streetAddress} readonly={isReadonly} />
-                        <TextInput name="zipCode" label="Postnummer" defaultValue={consultant?.zipCode} readonly={isReadonly} />
-                        <TextInput name="city" label="Ort" defaultValue={consultant?.city} readonly={isReadonly} />
-                        <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={consultant?.isOnAssignment ?? false} readonly={isReadonly} />
-                        {
-                            isReadonly
-                                ? null
-                                : <div className="btn-group float-right" role="group">
-                                    <button type="button" className="btn btn-danger" onClick={() => setIsReadonly(true)}>Avbryt</button>
-                                    <button type="submit" className="btn btn-success">Spara</button>
-                                </div>
-                        }
-                    </form>
+                    <FormProvider {...methods}>
+                        <form onSubmit={methods.handleSubmit(props.onSubmitForm)}>
+                            <HiddenInput name="consultantId" value={props.consultant?.consultantId} />
+                            <TextInput name="fullName" label="Namn" defaultValue={props.consultant?.fullName} readonly={props.isReadonly} />
+                            <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={props.consultant?.dateOfBirth} readonly={props.isReadonly} />
+                            <TextInput name="emailAddress" label="E-postadress" type="email" defaultValue={props.consultant?.emailAddress} readonly={props.isReadonly} />
+                            <TextInput name="streetAddress" label="Gatuadress" defaultValue={props.consultant?.streetAddress} readonly={props.isReadonly} />
+                            <TextInput name="zipCode" label="Postnummer" defaultValue={props.consultant?.zipCode} readonly={props.isReadonly} />
+                            <TextInput name="city" label="Ort" defaultValue={props.consultant?.city} readonly={props.isReadonly} />
+                            <Checkbox name="isOnAssignment" label="Är på uppdrag" isChecked={props.consultant?.isOnAssignment ?? false} readonly={props.isReadonly} />
+                            {
+                                props.isReadonly
+                                    ? null
+                                    : <div className="btn-group float-right" role="group">
+                                        <button type="button" className="btn btn-danger" onClick={() => props.onAbort()}>Avbryt</button>
+                                        <button type="submit" className="btn btn-success">Spara</button>
+                                    </div>
+                            }
+                            </form>
+                    </FormProvider>
                 </div>
             </div>
         </>
