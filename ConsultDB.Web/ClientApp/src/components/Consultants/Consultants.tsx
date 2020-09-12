@@ -13,26 +13,38 @@ export const Consultants: React.FunctionComponent = () => {
     const [consultants, setConsultants] = React.useState<IConsultantListItem[]>([]);
 
     React.useEffect(() => {
+        populateTable();
+    }, []);
+
+    const populateTable = () => {
         api.getList(
             (data: IConsultantListItem[]) => {
                 setConsultants(data);
             }
         );
-    }, []);
+    }
 
     const onRowClick = (id: number) => {
         history.push(`${CONSULTANT_DETAIL}/${id}`);
     };
 
     const onAddClick = () => {
-        history.push(CONSULTANTS);
+        history.push(CONSULTANT_DETAIL);
+    }
+
+    const onRowDelete = (id: number) => {
+        api.deleteConsultant(id.toString(),
+            () => {
+                populateTable();
+            }
+        );
     }
 
     return (
         <>
             <h1>Consultants</h1>
             <button type="button" className="btn btn-success float-right" onClick={() => onAddClick()}>Lägg till</button>
-            <ConsultantsTable consultants={consultants} onRowClick={onRowClick} />
+            <ConsultantsTable consultants={consultants} onRowClick={onRowClick} onRowDelete={onRowDelete} />
         </>
     );
 }

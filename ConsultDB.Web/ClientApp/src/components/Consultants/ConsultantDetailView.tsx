@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { useHistory, useParams } from 'react-router';
-import { CONSULTANT_DETAIL } from '../../routing/WebRouting';
+import { CONSULTANTS, CONSULTANT_DETAIL } from '../../routing/WebRouting';
 import { Spinner } from '../Common/Spinner';
 import { ConsultantDetailViewForm } from './ConsultantDetailViewForm';
 import { ConsultantsApi } from './ConsultantsApi';
@@ -37,8 +37,7 @@ export const ConsultantDetailView: React.FunctionComponent = () => {
         if (isNew) {
             api.createConsultant(data,
                 (response: IConsultant) => {
-                    setConsultant(response);
-                    history.push(`${CONSULTANT_DETAIL}/${response.consultantId}`);
+                    history.push(CONSULTANTS);
                 }
             );
         }
