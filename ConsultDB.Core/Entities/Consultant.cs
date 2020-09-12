@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,5 +28,7 @@ namespace ConsultDB.Core.Entities
         public string City { get; set; }
 
         public bool IsOnAssignment { get; set; }
+
+        public string Skills { get; set; }
     }
 }

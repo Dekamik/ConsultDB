@@ -43,6 +43,7 @@ namespace ConsultDB.BusinessLogic.Consultants
                 existingConsultant.ZipCode = consultant.ZipCode;
                 existingConsultant.City = consultant.City;
                 existingConsultant.IsOnAssignment = consultant.IsOnAssignment;
+                existingConsultant.Skills = consultant.Skills;
 
                 _dbContext.SaveChanges();
             }

@@ -21,7 +21,7 @@ namespace ConsultDB.Api.Consultants.Models
 
         public string City { get; set; }
 
-        public string[] Skills { get; set; }
+        public string Skills { get; set; } // TODO: Create a list of skills, for easy editing and comparison
 
         public bool IsOnAssignment { get; set; }
     }

@@ -6,6 +6,7 @@ import { IConsultantListItem } from "./List/IConsultantListItem";
 export class ConsultantsApi extends Api {
 
     getList(success: (data: IConsultantListItem[]) => void, error?: (message: string) => void, final?: () => void) {
+        // TODO: Implement pagination
         this.get(`${API_CONSULTANTS}/list`, success, error, final);
     }
 

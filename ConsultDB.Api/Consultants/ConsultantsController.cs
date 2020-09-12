@@ -86,7 +86,8 @@ namespace ConsultDB.Api.Consultants
                 StreetAddress = model.StreetAddress,
                 ZipCode = int.Parse(model.ZipCode),
                 City = model.City,
-                IsOnAssignment = model.IsOnAssignment
+                IsOnAssignment = model.IsOnAssignment,
+                Skills = model.Skills
             };
             if (model.ConsultantId.HasValue)
             {
@@ -106,7 +107,8 @@ namespace ConsultDB.Api.Consultants
                 StreetAddress = consultant.StreetAddress,
                 ZipCode = consultant.ZipCode.ToString(),
                 City = consultant.City,
-                IsOnAssignment = consultant.IsOnAssignment
+                IsOnAssignment = consultant.IsOnAssignment,
+                Skills = consultant.Skills
             };
         }
     }
