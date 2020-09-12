@@ -7,6 +7,7 @@ interface ITextInput {
     defaultValue?: string;
     readonly?: boolean;
     type?: "text" | "email";
+    readonlySuffix?: string;
 }
 
 export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
@@ -22,7 +23,7 @@ export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
             }
             {
                 props.readonly
-                    ? <p className="form-control-plaintext" id={props.name} >{props.defaultValue}</p>
+                    ? <p className="form-control-plaintext" id={props.name} >{props.defaultValue}{props.readonlySuffix}</p>
                     : <input className="form-control" type={props.type ?? "text"} id={props.name} name={props.name} defaultValue={props.defaultValue} ref={typeof register !== "string" ? register() : ""} />
             }
         </div>

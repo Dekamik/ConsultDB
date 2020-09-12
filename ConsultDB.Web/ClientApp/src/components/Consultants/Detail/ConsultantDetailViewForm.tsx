@@ -37,7 +37,7 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                                 <div className="col-sm-6">
                                     <HiddenInput name="consultantId" value={props.consultant?.consultantId} />
                                     <TextInput name="fullName" label="Namn" defaultValue={props.consultant?.fullName} readonly={props.isReadonly} />
-                                    <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={props.consultant?.dateOfBirth} readonly={props.isReadonly} />
+                                    <TextInput name="dateOfBirth" label="Födelsedatum" defaultValue={props.consultant?.dateOfBirth} readonly={props.isReadonly} readonlySuffix={` (${props.consultant?.age} år)`} />
                                     <TextInput name="emailAddress" label="E-postadress" type="email" defaultValue={props.consultant?.emailAddress} readonly={props.isReadonly} />
                                 </div>
                                 <div className="col-sm-6">

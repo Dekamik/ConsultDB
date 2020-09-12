@@ -2,6 +2,7 @@
     consultantId: number;
     fullName: string;
     dateOfBirth: string;
+    age: number;
     emailAddress: string;
     streetAddress: string;
     zipCode: string;

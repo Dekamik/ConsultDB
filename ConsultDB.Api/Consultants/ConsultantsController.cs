@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ConsultDB.Api.Consultants.Models;
 using ConsultDB.Api.Helpers;
 using ConsultDB.BusinessLogic.Consultants;
+using ConsultDB.BusinessLogic.Helpers;
 using ConsultDB.Core.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -118,6 +119,7 @@ namespace ConsultDB.Api.Consultants
                 ConsultantId = consultant.ConsultantId,
                 FullName = consultant.Name,
                 DateOfBirth = consultant.DateOfBirth.ToString("yyyy-MM-dd"),
+                Age = consultant.DateOfBirth.GetAge(DateTime.Today),
                 EmailAddress = consultant.EmailAddress,
                 StreetAddress = consultant.StreetAddress,
                 ZipCode = consultant.ZipCode.ToString(),
