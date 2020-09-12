@@ -19,7 +19,9 @@ namespace ConsultDB.BusinessLogic.Consultants
 
         public Task<Consultant> GetConsultant(int id)
         {
-            return _dbContext.Consultants.SingleAsync(c => c.ConsultantId == id);
+            return _dbContext.Consultants
+                .Include(nameof(Consultant.ConsultantImage))
+                .SingleAsync(c => c.ConsultantId == id);
         }
 
         public async Task<Consultant> CreateConsultant(Consultant consultant)
@@ -32,6 +34,7 @@ namespace ConsultDB.BusinessLogic.Consultants
         public async Task UpdateConsultant(Consultant consultant)
         {
             Consultant existingConsultant = await GetAll()
+                .Include(nameof(Consultant.ConsultantImage))
                 .SingleOrDefaultAsync(c => c.ConsultantId == consultant.ConsultantId);
             if (existingConsultant != null)
             {
@@ -45,6 +48,23 @@ namespace ConsultDB.BusinessLogic.Consultants
                 existingConsultant.IsOnAssignment = consultant.IsOnAssignment;
                 existingConsultant.Skills = consultant.Skills;
 
+                // Update or add only if new image exists 
+                // and (existing consultant has no image or existing and new consultant images don't share name)
+                if (consultant.ConsultantImage != null
+                    && (existingConsultant.ConsultantImageId == null || existingConsultant.ConsultantImage.Name != consultant.ConsultantImage.Name))
+                {
+                    if (existingConsultant.ConsultantImageId != null)
+                    {
+                        _dbContext.ConsultantImages.Remove(existingConsultant.ConsultantImage);
+                    }
+
+                    existingConsultant.ConsultantImage = new ConsultantImage
+                    {
+                        Data = consultant.ConsultantImage.Data,
+                        Name = consultant.ConsultantImage.Name
+                    };
+                }
+                
                 _dbContext.SaveChanges();
             }
         }

@@ -1,20 +1,23 @@
 ﻿import * as React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 interface IImageInput {
     name: string;
-    defaultValue?: File;
+    defaultValue?: string;
+    defaultValueType?: string;
     label?: string;
     readonly?: boolean;
 }
 
 export const ImageInput: React.FunctionComponent<IImageInput> = (props) => {
 
+    const { register } = useFormContext();
+
     const [objectURL, setObjectURL] = React.useState<string | undefined>();
 
     React.useEffect(() => {
         if (props.defaultValue != null) {
-            let url = URL.createObjectURL(props.defaultValue);
-            setObjectURL(url);
+            setObjectURL(`data:;base64,${props.defaultValue}`);
         }
     }, [])
 
@@ -32,8 +35,8 @@ export const ImageInput: React.FunctionComponent<IImageInput> = (props) => {
             }
             {
                 props.readonly
-                    ? objectURL ? <img className="profile-img" src={objectURL} /> : null
-                    : <input className="form-control-plaintext" type="file" id={props.name} name={props.name} accept="image/*" onChange={handleImageChange} />
+                    ? <img className="form-control-plaintext profile-img" src={objectURL} />
+                    : <input className="form-control-plaintext" type="file" id={props.name} name={props.name} accept="image/*" onChange={handleImageChange} ref={register()} />
             }
         </div>
     );

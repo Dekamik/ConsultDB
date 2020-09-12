@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,5 +26,7 @@ namespace ConsultDB.Api.Consultants.Models
         public string Skills { get; set; } // TODO: Create a list of skills, for easy editing and comparison
 
         public bool IsOnAssignment { get; set; }
+
+        public string ProfileImage { get; set; }
     }
 }

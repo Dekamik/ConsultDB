@@ -11,7 +11,11 @@ namespace ConsultDB.Core.Entities
         [ForeignKey(nameof(Entities.Consultant))]
         public int ConsultantImageId { get; set; }
 
+        [Required]
         public byte[] Data { get; set; }
+
+        [Required]
+        public string Name { get; set; }
 
         public virtual Consultant Consultant { get; set; }
     }

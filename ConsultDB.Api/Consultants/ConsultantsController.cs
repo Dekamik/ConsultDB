@@ -1,9 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ConsultDB.Api.Consultants.Models;
+using ConsultDB.Api.Helpers;
 using ConsultDB.BusinessLogic.Consultants;
 using ConsultDB.Core.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -54,7 +57,7 @@ namespace ConsultDB.Api.Consultants
         [Route("new")]
         public async Task<IActionResult> NewConsultant([FromForm] ConsultantModel model)
         {
-            Consultant consultant = CreateConsultant(model);
+            Consultant consultant = await CreateConsultantAsync(model);
             Consultant dbConsultant = await _consultantService.CreateConsultant(consultant);
             ConsultantModel newModel = CreateConsultantModel(dbConsultant);
             return Ok(newModel);
@@ -63,7 +66,7 @@ namespace ConsultDB.Api.Consultants
         [HttpPost]
         public async Task<IActionResult> UpdateConsultant([FromForm] ConsultantModel model)
         {
-            Consultant consultant = CreateConsultant(model);
+            Consultant consultant = await CreateConsultantAsync(model);
             await _consultantService.UpdateConsultant(consultant);
             return Ok(model);
         }
@@ -76,8 +79,9 @@ namespace ConsultDB.Api.Consultants
             return Ok();
         }
 
-        private Consultant CreateConsultant(ConsultantModel model)
+        private async Task<Consultant> CreateConsultantAsync(ConsultantModel model)
         {
+            IFormFile formFile = Request.Form.Files.FirstOrDefault();
             var consultant = new Consultant
             {
                 Name = model.FullName,
@@ -87,18 +91,29 @@ namespace ConsultDB.Api.Consultants
                 ZipCode = int.Parse(model.ZipCode),
                 City = model.City,
                 IsOnAssignment = model.IsOnAssignment,
-                Skills = model.Skills
+                Skills = model.Skills,
             };
+
             if (model.ConsultantId.HasValue)
             {
                 consultant.ConsultantId = model.ConsultantId.Value;
             }
+
+            if (formFile != null)
+            {
+                consultant.ConsultantImage = new ConsultantImage
+                {
+                    Data = await formFile.GetBufferAsync(),
+                    Name = formFile.Name
+                };
+            }
+
             return consultant;
         }
 
         private ConsultantModel CreateConsultantModel(Consultant consultant)
         {
-            return new ConsultantModel
+            var model = new ConsultantModel
             {
                 ConsultantId = consultant.ConsultantId,
                 FullName = consultant.Name,
@@ -110,6 +125,11 @@ namespace ConsultDB.Api.Consultants
                 IsOnAssignment = consultant.IsOnAssignment,
                 Skills = consultant.Skills
             };
+            if (consultant.ConsultantImage != null)
+            {
+                model.ProfileImage = Convert.ToBase64String(consultant.ConsultantImage.Data);
+            }
+            return model;
         }
     }
 }
