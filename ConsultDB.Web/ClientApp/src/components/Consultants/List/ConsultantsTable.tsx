@@ -6,11 +6,12 @@ interface IConsultantTable {
     consultants: IConsultantListItem[];
     onRowClick: (id: number) => void;
     onRowDelete: (id: number) => void;
+    isLoading: boolean;
 }
 
-export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ consultants, onRowClick, onRowDelete }) => {
+export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ consultants, onRowClick, onRowDelete, isLoading }) => {
     return (
-        <Spinner isLoading={consultants.length === 0}>
+        <Spinner isLoading={isLoading}>
             <div className="table-responsive">
                 <table className="table table-striped table-hover">
                     <thead>
@@ -22,15 +23,21 @@ export const ConsultantsTable: React.FunctionComponent<IConsultantTable> = ({ co
                     </thead>
                     <tbody>
                         {
-                            consultants.map(consultant =>
-                                <tr key={consultant.consultantId}>
-                                    <td onClick={() => onRowClick(consultant.consultantId)}>{consultant.fullName}</td>
-                                    <td onClick={() => onRowClick(consultant.consultantId)}>{consultant.isOnAssignment ? "Ja" : "Nej"}</td>
-                                    <td>
-                                        <button type="button" className="btn btn-danger" onClick={() => onRowDelete(consultant.consultantId)}>Ta bort</button>
+                            consultants.length !== 0
+                                ? consultants.map(consultant =>
+                                    <tr key={consultant.consultantId}>
+                                        <td onClick={() => onRowClick(consultant.consultantId)}>{consultant.fullName}</td>
+                                        <td onClick={() => onRowClick(consultant.consultantId)}>{consultant.isOnAssignment ? "Ja" : "Nej"}</td>
+                                        <td>
+                                            <button type="button" className="btn btn-danger" onClick={() => onRowDelete(consultant.consultantId)}>Ta bort</button>
+                                        </td>
+                                    </tr>
+                                )
+                                : <tr>
+                                    <td className="text-center" colSpan={3}>
+                                        Inga konsulter hittades i databasen. Klicka "Lägg till" för att skapa nya konsulter.
                                     </td>
                                 </tr>
-                            )
                         }
                     </tbody>
                 </table>

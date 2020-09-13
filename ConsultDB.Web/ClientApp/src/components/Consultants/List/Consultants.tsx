@@ -14,16 +14,24 @@ export const Consultants: React.FunctionComponent = () => {
 
     const [consultants, setConsultants] = React.useState<IConsultantListItem[]>([]);
     const [filteredConsultants, setFilteredConsultants] = React.useState<IConsultantListItem[]>([]);
+    const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         populateTable();
     }, []);
 
     const populateTable = () => {
+        setIsLoading(true);
         api.getList(
             (data: IConsultantListItem[]) => {
                 setConsultants(data);
                 setFilteredConsultants(data);
+            },
+            (message: string) => {
+                console.log(message);
+            },
+            () => {
+                setIsLoading(false);
             }
         );
     }
@@ -60,7 +68,6 @@ export const Consultants: React.FunctionComponent = () => {
 
     return (
         <>
-            <h1>Consultants</h1>
             <div className="row">
                 <ConsultantsFilter searchInputId={searchInputId} onApply={onSearch} onClear={onClear} />
             </div>
@@ -71,7 +78,7 @@ export const Consultants: React.FunctionComponent = () => {
                 </div>
             </div>
             <div className="row">
-                <ConsultantsTable consultants={filteredConsultants} onRowClick={onRowClick} onRowDelete={onRowDelete} />
+                <ConsultantsTable consultants={filteredConsultants} onRowClick={onRowClick} onRowDelete={onRowDelete} isLoading={isLoading} />
             </div>
         </>
     );
