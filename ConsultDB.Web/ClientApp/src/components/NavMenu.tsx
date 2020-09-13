@@ -22,7 +22,7 @@ export const NavMenu: React.FunctionComponent = () => {
                     <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={isOpen} navbar>
                         <ul className="navbar-nav flex-grow">
                             <NavItem>
-                                <NavLink tag={Link} className="text-dark" to={CONSULTANTS}>Consultants</NavLink>
+                                <NavLink tag={Link} className="text-dark" to={CONSULTANTS}>Konsulter</NavLink>
                             </NavItem>
                         </ul>
                     </Collapse>
