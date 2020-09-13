@@ -63,7 +63,7 @@ export const ConsultantDetailViewForm: React.FunctionComponent<IConsultantDetail
                                         <button type="submit" className="btn btn-success">Spara</button>
                                     </div>
                             }
-                            </form>
+                        </form>
                     </FormProvider>
                 </div>
             </div>

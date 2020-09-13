@@ -18,7 +18,7 @@ export const TextInput: React.FunctionComponent<ITextInput> = (props) => {
         <div className="form-group">
             {
                 props.label
-                    ? <label htmlFor={props.name}>{props.label}</label>
+                    ? <label className="form-control-label" htmlFor={props.name}>{props.label}</label>
                     : null
             }
             {

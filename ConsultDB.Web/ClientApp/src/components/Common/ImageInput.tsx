@@ -30,7 +30,7 @@ export const ImageInput: React.FunctionComponent<IImageInput> = (props) => {
         <div className="form-group">
             {
                 props.label
-                    ? <label htmlFor={props.name}>{props.label}</label>
+                    ? <label className="form-control-label" htmlFor={props.name}>{props.label}</label>
                     : null
             }
             {

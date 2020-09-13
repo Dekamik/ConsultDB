@@ -19,3 +19,7 @@ code {
     height: auto;
     width: auto;
 }
+
+.form-control-label {
+    font-weight: bold;
+}
